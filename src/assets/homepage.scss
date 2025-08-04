@@ -83,3 +83,74 @@
   background-color: white;
   color: black;
 }
+
+.projects-section {
+  background-color: black;
+  padding: 2.5em 2em;
+  color: white;
+}
+
+.projects-heading {
+  font-size: 2rem;
+  margin-bottom: 1.5em;
+  margin-left: 0.7em;
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  color: white;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  column-gap: 8em;
+  row-gap: 4em;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  background-color: #111;
+  border-radius: 12px;
+  padding: 1.5em;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px pink;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.project-item img {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 4px pink;
+}
+
+.project-text {
+  flex: 1;
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5em;
+    color: white;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: white;
+  }
+}
