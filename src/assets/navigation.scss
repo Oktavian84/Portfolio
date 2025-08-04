@@ -1,0 +1,54 @@
+.navbar {
+  background-color: black;
+  color: white;
+  padding: 1em 2em;
+  border-bottom: 2px solid yellow;
+  box-shadow: inset 0 -10px 10px -10px yellow, inset 0 -30px 20px -30px orange;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-size: 1.5rem;
+  color: orange;
+  font-family: "Rye", sans-serif;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: yellow;
+  text-shadow: 0 0 10px yellow, 0 0 20px orange;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2em;
+}
+
+.nav-link {
+  color: yellow;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: "Shojumaru", sans-serif;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background-color: yellow;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
