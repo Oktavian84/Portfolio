@@ -7,9 +7,6 @@ const NavigationBar = () => {
         Oktavian <span className="lastname">Paunku</span>
       </Link>
       <div className="nav-links">
-        <NavLink to="/projects" className="nav-link">
-          Projects
-        </NavLink>
         <NavLink to="/contact" className="nav-link">
           Contact
         </NavLink>

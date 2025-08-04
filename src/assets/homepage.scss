@@ -19,7 +19,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   margin-bottom: 0.4em;
 }
 
@@ -74,7 +74,7 @@
   padding: 1em 2em;
   font-size: 1rem;
   border-radius: 10px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -86,7 +86,7 @@
 
 .projects-section {
   background-color: black;
-  padding: 2.5em 2em;
+  padding: 2.5em 1em;
   color: white;
 }
 
@@ -102,10 +102,11 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-  column-gap: 8em;
-  row-gap: 4em;
-  max-width: 1700px;
+  gap: 4em;
+  max-width: 1800px;
   margin: 0 auto;
+  padding: 0 1em;
+  box-sizing: border-box;
 }
 
 .project-item {
@@ -119,16 +120,11 @@
   color: white;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 20px pink;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-  }
+.project-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px pink;
 }
 
 .project-item img {
@@ -136,7 +132,6 @@
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
-  box-shadow: 0 0 4px pink;
 }
 
 .project-text {
@@ -152,5 +147,128 @@
     font-size: 1.1rem;
     line-height: 1.5;
     color: white;
+  }
+}
+
+.experience-section {
+  background-color: black;
+  color: white;
+  padding: 1.5em 1em;
+
+  .experience-heading {
+    font-size: 2rem;
+    margin-bottom: 1em;
+    font-family: "Anton", sans-serif;
+    text-transform: uppercase;
+    color: white;
+    padding: 0.3em 1em;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .experience-grid {
+    display: flex;
+    justify-content: center;
+    gap: 7em;
+    flex-wrap: wrap;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .experience-card {
+    background-color: #111;
+    border: 0.5px solid pink;
+    border-radius: 20px;
+    padding: 2em;
+    flex: 1 1 300px;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    color: pink;
+    text-align: center;
+
+     p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 1em 0;
+      color: white;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin: 1em 0;
+      color: white;
+    }
+
+    .experience-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 1em;
+      text-decoration: underline;
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+  }
+
+  .main-heading {
+    font-size: 2rem;
+  }
+
+  .hero-image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text h2 {
+    align-self: center;
+    font-size: 1.6em;
+  }
+
+  .hero-text p {
+    text-align: center;
+  }
+
+  .contact-btn {
+    align-self: center;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1em;
+    gap: 2em;
+  }
+
+  .project-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1em;
+  }
+
+  .project-item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .experience-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .experience-card {
+    width: 90%;
   }
 }

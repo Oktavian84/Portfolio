@@ -55,3 +55,19 @@
   transform: scaleX(1);
   transform-origin: left;
 }
+
+@media (max-width: 768px) {
+.navbar {
+  padding: 1.5em 1.5em;
+}
+
+ .brand {
+  font-size: 1.2rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+}
+}
