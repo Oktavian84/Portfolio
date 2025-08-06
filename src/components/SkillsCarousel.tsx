@@ -62,7 +62,7 @@ const SkillsCarousel: FC = () => {
           autoplay={{ delay: 1000, disableOnInteraction: false }}
           loop={true}
           spaceBetween={20}
-          speed={3000} 
+          speed={3000}
           breakpoints={{
             320: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
