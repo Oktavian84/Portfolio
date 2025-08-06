@@ -9,6 +9,19 @@
   }
 }
 
+@keyframes slideInFromLeftWithColor {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 1;
+    color: pink;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    color: white;
+  }
+}
+
 @keyframes fadeInImage {
   from {
     opacity: 0;
@@ -54,7 +67,7 @@
 }
 
 .main-heading {
-  font-size: 3.7rem;
+  font-size: 4rem;
   font-weight: bold;
   text-transform: uppercase;
   font-family: "Bangers", sans-serif;
@@ -62,8 +75,8 @@
   animation-delay: 0s;
   transform: translateX(-100vw);
   opacity: 0;
-  animation: slideInFromLeft 2s ease-out forwards;
-  animation-delay: 1.2s;
+  animation: slideInFromLeft 1.5s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 .hero-inner {
@@ -78,8 +91,8 @@
   flex-shrink: 0;
   margin-top: 1em;
   opacity: 0;
-  animation: fadeInImage 0.7s ease-in forwards;
-  animation-delay: 7.5s;
+  animation: fadeInImage 2s ease-in forwards;
+  animation-delay: 2.1s;
 
   img {
     width: 400px;
@@ -102,8 +115,9 @@
 .hero-text h2 {
   transform: translateX(-100vw);
   opacity: 0;
-  animation: slideInFromLeft 2s ease-out forwards;
-  animation-delay: 3.3s;
+  animation: slideInFromLeftWithColor 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+  color: black;
 }
 
 .design {
@@ -128,8 +142,8 @@
   margin-top: 2em;
   font-weight: 599;
   opacity: 0;
-  animation: fadeInText 1s ease-in forwards;
-  animation-delay: 9.5s;
+  animation: fadeInText 2s ease-in forwards;
+  animation-delay: 2.1s;
 }
 
 .projects-section {
@@ -137,8 +151,8 @@
   padding: 1em;
   color: white;
   opacity: 0;
-  animation: fadeInProjects 8s ease-in forwards;
-  animation-delay: 12.5s;
+  animation: fadeInProjects 2s ease-in forwards;
+  animation-delay: 2.1s;
 }
 
 .projects-heading {
@@ -193,7 +207,7 @@
   h3 {
     font-size: 1.6rem;
     margin-bottom: 0.5em;
-    color: white;
+    color: pink;
   }
 
   p {
@@ -207,7 +221,7 @@
   background-color: black;
   color: white;
   padding: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 
   .experience-heading {
     font-size: 2.7rem;
@@ -235,7 +249,7 @@
     background-color: #111;
     border: 0.5px solid pink;
     border-radius: 20px;
-    padding: 2em;
+    padding: 0.5em 2em;
     flex: 1 1 300px;
     max-width: 500px;
     box-shadow: 0 0 10px pink;
@@ -251,13 +265,20 @@
     }
 
     .experience-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: bold;
       margin-bottom: 1em;
       color: pink;
       font-style: italic;
     }
   }
+}
+
+.place {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: pink;
+
 }
 
 .experience-card:hover {

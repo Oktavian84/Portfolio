@@ -11,13 +11,15 @@ const HomePage = () => {
             </div>
 
             <div className="hero-text">
-              <h1 className="main-heading">YOUR VISION, <span className="design">MY DESIGN</span></h1>
+              <h1 className="main-heading">
+                YOUR VISION, <span className="design">MY DESIGN</span>
+              </h1>
               <h2>Creative, active and always attractive.</h2>
               <p>
-                Welcome to my creative world! I'm a passionate designer and
-                developer, crafting unique digital experiences. Explore my projects,
-                skills, experience and see how I can take your vision
-                to the next level.
+                Welcome to my creative world. I am a passionate designer and
+                developer who crafts unique digital experiences. Explore my
+                projects, skills and experience to see how I can take your
+                vision to the next level.
               </p>
             </div>
           </div>
@@ -95,7 +97,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <SkillsCarousel/>
+      <SkillsCarousel />
 
       <section className="experience-section">
         <h2 className="experience-heading">Experience</h2>
@@ -103,17 +105,26 @@ const HomePage = () => {
           <div className="experience-card">
             <h3 className="experience-title">Work</h3>
             <p>
-              <strong>Bonakemi (2004–2010)</strong>
+              <strong>
+                <span className="place">Bonakemi</span> <br />
+                (2004–2010)
+              </strong>
               <br />
               Machine Operator
             </p>
             <p>
-              <strong>Global Bygg AB (2012–2013)</strong>
+              <strong>
+                <span className="place">Global Bygg AB</span> <br />
+                (2012–2013)
+              </strong>
               <br />
               Designer
             </p>
             <p>
-              <strong>Bold Printing Malmö AB (2007–2024)</strong>
+              <strong>
+                <span className="place">Bold Printing Malmö AB</span> <br />
+                (2007–2024)
+              </strong>
               <br />
               Machine Operator
             </p>
@@ -121,17 +132,26 @@ const HomePage = () => {
           <div className="experience-card">
             <h3 className="experience-title">Education</h3>
             <p>
-              <strong>Malmö Latinskola (2000–2003)</strong>
+              <strong>
+                <span className="place">Malmö Latinskola</span> <br />
+                (2000–2003)
+              </strong>
               <br />
               Science Program (Math/Data)
             </p>
             <p>
-              <strong>Malmö University (2003–2006)</strong>
+              <strong>
+                <span className="place">Malmö University</span> <br />
+                (2003–2006)
+              </strong>
               <br />
               Construction Engineering (Design)
             </p>
             <p>
-              <strong>Medieinstitutet (2024–2026)</strong>
+              <strong>
+                <span className="place">Medieinstitutet</span> <br />
+                (2024–2026)
+              </strong>
               <br />
               Frontend Developer
             </p>

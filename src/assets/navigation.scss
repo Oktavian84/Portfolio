@@ -14,10 +14,12 @@
   color: white;
   text-decoration: none;
   font-weight: bold;
+  font-family: "Bangers", sans-serif;
+  letter-spacing: 4px;
 }
 
 .brand:hover {
-  color: pink;
+  color: white;
   text-shadow: 0 0 10px pink, 0 0 20px pink;
 }
 
@@ -54,17 +56,17 @@
 }
 
 @media (max-width: 768px) {
-.navbar {
-  padding: 1.5em 1.5em;
-}
+  .navbar {
+    padding: 1.5em 1.5em;
+  }
 
- .brand {
-  font-size: 1.2rem;
-  color: white;
-  text-decoration: none;
-}
+  .brand {
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+  }
 
-.nav-link {
-  font-size: 0.9rem;
-}
+  .nav-link {
+    font-size: 0.9rem;
+  }
 }
