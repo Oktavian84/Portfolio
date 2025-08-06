@@ -1,3 +1,41 @@
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInProjects {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .hero-section {
   background-image: url("/images/Background.jpg");
   background-size: cover;
@@ -21,6 +59,11 @@
   text-transform: uppercase;
   font-family: "Bangers", sans-serif;
   letter-spacing: 2px;
+  animation-delay: 0s;
+  transform: translateX(-100vw);
+  opacity: 0;
+  animation: slideInFromLeft 2s ease-out forwards;
+  animation-delay: 1.2s;
 }
 
 .hero-inner {
@@ -34,6 +77,9 @@
 .hero-image {
   flex-shrink: 0;
   margin-top: 1em;
+  opacity: 0;
+  animation: fadeInImage 0.7s ease-in forwards;
+  animation-delay: 7.5s;
 
   img {
     width: 400px;
@@ -51,6 +97,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.hero-text h2 {
+  transform: translateX(-100vw);
+  opacity: 0;
+  animation: slideInFromLeft 2s ease-out forwards;
+  animation-delay: 3.3s;
 }
 
 .design {
@@ -74,12 +127,18 @@
   text-align: right;
   margin-top: 2em;
   font-weight: 599;
+  opacity: 0;
+  animation: fadeInText 1s ease-in forwards;
+  animation-delay: 9.5s;
 }
 
 .projects-section {
   background-color: black;
   padding: 1em;
   color: white;
+  opacity: 0;
+  animation: fadeInProjects 8s ease-in forwards;
+  animation-delay: 12.5s;
 }
 
 .projects-heading {
@@ -182,6 +241,7 @@
     box-shadow: 0 0 10px pink;
     color: pink;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     p {
       font-size: 1.4rem;
@@ -198,6 +258,11 @@
       font-style: italic;
     }
   }
+}
+
+.experience-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px pink;
 }
 
 .skills-section {

@@ -59,9 +59,10 @@ const SkillsCarousel: FC = () => {
       <div className="skills-carousel">
         <Swiper
           modules={[Autoplay]}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          autoplay={{ delay: 1000, disableOnInteraction: false }}
           loop={true}
           spaceBetween={20}
+          speed={3000} 
           breakpoints={{
             320: { slidesPerView: 1 },
             640: { slidesPerView: 2 },

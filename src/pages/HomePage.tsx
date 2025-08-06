@@ -15,8 +15,8 @@ const HomePage = () => {
               <h2>Creative, active and always attractive.</h2>
               <p>
                 Welcome to my creative world! I'm a passionate designer and
-                developer crafting unique digital experiences. Explore my
-                skills, experience, projects and see how I can take your vision
+                developer, crafting unique digital experiences. Explore my projects,
+                skills, experience and see how I can take your vision
                 to the next level.
               </p>
             </div>
