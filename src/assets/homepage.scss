@@ -136,7 +136,7 @@
 }
 
 .hero-text p {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   text-align: right;
   margin-top: 2em;
@@ -209,11 +209,11 @@
     margin-bottom: 0.5em;
     color: pink;
     font-style: italic;
-    text-shadow: 0 0 1px black, 0 0 2px black;
+    text-shadow: 0 0 1px pink, 0 0 2px pink;
   }
 
   p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 1.5;
     color: white;
   }
@@ -259,19 +259,32 @@
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    p {
-      font-size: 1.4rem;
-      line-height: 1.6;
-      margin: 1em 0;
-      color: white;
-    }
-
     .experience-title {
       font-size: 2.5rem;
       font-weight: bold;
       margin-bottom: 1em;
       color: pink;
       font-style: italic;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      margin: 1em 0;
+      color: white;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px pink;
+
+      p {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }
