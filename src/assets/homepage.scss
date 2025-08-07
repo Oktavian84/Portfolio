@@ -136,7 +136,7 @@
 }
 
 .hero-text p {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   text-align: right;
   margin-top: 2em;
@@ -205,13 +205,15 @@
   flex: 1;
 
   h3 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-bottom: 0.5em;
     color: pink;
+    font-style: italic;
+    text-shadow: 0 0 1px black, 0 0 2px black;
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     line-height: 1.5;
     color: white;
   }

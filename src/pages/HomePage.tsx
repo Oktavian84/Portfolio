@@ -17,7 +17,7 @@ const HomePage = () => {
               <h2>Creative, active and always attractive.</h2>
               <p>
                 Welcome to my creative world. I am a passionate designer and
-                developer who crafts unique digital experiences. Explore my
+                developer who crafts unique digital experiences.<br/> Explore my
                 projects, skills and experience to see how I can take your
                 vision to the next level.
               </p>
@@ -115,7 +115,7 @@ const HomePage = () => {
             <p>
               <strong>
                 <span className="place">Global Bygg AB</span> <br />
-                (2012–2013)
+                (2010–2012)
               </strong>
               <br />
               Designer
@@ -123,7 +123,7 @@ const HomePage = () => {
             <p>
               <strong>
                 <span className="place">Bold Printing Malmö AB</span> <br />
-                (2007–2024)
+                (2010–2024)
               </strong>
               <br />
               Machine Operator
