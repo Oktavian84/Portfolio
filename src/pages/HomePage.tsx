@@ -19,7 +19,7 @@ const HomePage = () => {
                 Welcome to my creative world. I am a passionate designer and
                 developer who crafts unique digital experiences.<br/> Explore my
                 projects, skills and experience to see how I can take your
-                vision to the next level.
+                vision to the next level. <br/>While this website is still a work in progress, feel free to reach out using the contact details provided.
               </p>
             </div>
           </div>
