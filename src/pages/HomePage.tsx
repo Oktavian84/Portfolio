@@ -158,10 +158,10 @@ const HomePage = () => {
           </div>
           <div className="experience-card">
             <h3 className="experience-title">Languages</h3>
-            <p>Swedish (Fluent in speech and writing)</p>
-            <p>English (Fluent in speech and writing)</p>
-            <p>Serbian (Fluent in speech and writing)</p>
-            <p>Romanian (Intermediate speech, limited writing)</p>
+            <p><span className="place">Swedish</span> (Fluent in speech and writing)</p>
+            <p><span className="place">English </span> (Fluent in speech and writing)</p>
+            <p><span className="place">Serbian</span> (Fluent in speech and writing)</p>
+            <p><span className="place">Romanian</span> (Intermediate speech, limited writing)</p>
           </div>
           <div className="experience-card">
             <h3 className="experience-title">Personality</h3>
