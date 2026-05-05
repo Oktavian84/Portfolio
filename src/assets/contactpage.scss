@@ -39,10 +39,8 @@
 
   display: grid;
   grid-template-columns: 500px 500px 370px;
-  grid-template-rows: auto auto;
   grid-template-areas:
-    "contact address profile"
-    "cv      address profile";
+    "contact cv profile";
   justify-content: center;
   align-items: start;
   justify-items: stretch;
@@ -106,10 +104,6 @@
 
 .contact-info-card {
   grid-area: contact;
-}
-
-.address-card {
-  grid-area: address;
 }
 
 .cv-card {
@@ -201,7 +195,6 @@ a[href^="mailto:"]:hover {
     grid-template-columns: 1fr;
     grid-template-areas:
       "contact"
-      "address"
       "cv"
       "profile";
     row-gap: 3em;
@@ -224,7 +217,6 @@ a[href^="mailto:"]:hover {
     grid-template-columns: 500px 350px;
     grid-template-areas:
       "contact profile"
-      "address profile"
       "cv      profile";
     column-gap: 5em;
     row-gap: 2.5em;

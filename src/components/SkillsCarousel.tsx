@@ -24,6 +24,8 @@ const skills: SkillItem[] = [
   { image: "/images/Scrum.png", alt: "Scrum", rating: "4" },
   { image: "/images/AutoCad.png", alt: "AutoCAD", rating: "3" },
   { image: "/images/Figma.png", alt: "Figma", rating: "3" },
+  { image: "/images/Tailwind.png", alt: "Tailwind CSS", rating: "3-5" },
+  { image: "/images/EmailJs.png", alt: "EmailJs", rating: "3" },
   { image: "/images/Affinity Photo.png", alt: "Affinity Photo", rating: "3" },
 ];
 
@@ -33,10 +35,11 @@ const SkillsCarousel: FC = () => {
       className="skills-section"
       data-aos="fade-up"
       data-aos-anchor=".projects-section"
-      data-aos-anchor-placement="bottom-top"
+      data-aos-anchor-placement="bottom-center"
       data-aos-offset="0"
+      data-aos-once="false"
     >
-      <h2 className="skills-heading">Skills</h2>
+      <h2 className="skills-heading">Tech Stack</h2>
 
       <div className="skills-carousel">
         <Swiper

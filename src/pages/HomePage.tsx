@@ -1,7 +1,10 @@
 // pages/HomePage.tsx
+import { useState } from "react";
 import SkillsCarousel from "../components/SkillsCarousel";
 
 const HomePage = () => {
+  const [hungryHubFlipped, setHungryHubFlipped] = useState(false);
+
   return (
     <>
       <section className="hero-section">
@@ -33,10 +36,11 @@ const HomePage = () => {
         className="projects-section"
         data-aos="fade-up"
         data-aos-anchor=".hero-section"
-        data-aos-anchor-placement="bottom-top"
+        data-aos-anchor-placement="bottom-center"
         data-aos-offset="0"
+        data-aos-once="false"
       >
-        <h2 className="projects-heading">Latest Projects</h2>
+        <h2 className="projects-heading">School Projects</h2>
 
         <div className="projects-grid">
           <a
@@ -83,7 +87,7 @@ const HomePage = () => {
               <h3>Star Wars Encyclopedia</h3>
               <p>
                 Browse Star Wars characters, planets and ships using a custom
-                API project. Clean design with React. My first React project.
+                API project. Rich design with React. My first React project.
               </p>
             </div>
           </a>
@@ -99,24 +103,62 @@ const HomePage = () => {
               <h3>OMDB</h3>
               <p>
                 Search for any movie using the OMDB API. Responsive layout with
-                dynamic search filtering. Implementing TanStack Querry.
+                dynamic search filtering. Clean design with React. Implementing TanStack Querry.
               </p>
             </div>
           </a>
 
+          <div
+            className={`project-item project-item--flip ${
+              hungryHubFlipped ? "project-item--flipped" : ""
+            }`}
+            onClick={() => setHungryHubFlipped((v) => !v)}
+            onMouseLeave={() => setHungryHubFlipped(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setHungryHubFlipped((v) => !v);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-expanded={hungryHubFlipped}
+            aria-label="Hungry Hub — click to read why the project is not live online"
+          >
+            <div className="project-item-flip-inner">
+              <div className="project-item-flip-face project-item-flip-face--front">
+                <img src="/images/Project5.png" alt="Hungry Hub" />
+                <div className="project-text">
+                  <h3>Hungry Hub</h3>
+                  <p>
+                    A restaurant and café guide with live map markers and details.
+                    Built in React with Firestore and Google Maps. My last group
+                    project and first time using Firestore.
+                  </p>
+                </div>
+              </div>
+              <div className="project-item-flip-face project-item-flip-face--back">
+                <p className="project-item-flip-message">
+                  This project is not live online because it would incur recurring
+                  monthly costs. Move the cursor away or click again to flip back.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <a
-            href="https://fed24hungryhub.netlify.app/"
+            href="https://bachelor-thesis-sandy.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="project-item"
           >
-            <img src="/images/Project5.png" alt="Hungry Hub" />
+            <img src="/images/Project6.png" alt="CINC ART bachelor thesis site" />
             <div className="project-text">
-              <h3>Hungry Hub</h3>
+              <h3>CINC ART</h3>
               <p>
-                A restaurant and café guide with live map markers and details.
-                Built in React with Firestore and Google Maps. My last group
-                project and first time using Firestore.
+                A marketing site for a welded metal sculpture brand, with gallery
+                pages and contact. Built around a CMS for editable content. My
+                bachelor thesis project.
               </p>
             </div>
           </a>
@@ -131,16 +173,16 @@ const HomePage = () => {
         className="experience-section"
         data-aos="fade-up"
         data-aos-anchor=".skills-section"
-        data-aos-anchor-placement="bottom-top"
-        data-aos-offset="0"
+        data-aos-anchor-placement="bottom-center"
+        data-aos-offset="-120"
       >
         <h2 className="experience-heading">Experiences</h2>
         <div className="experience-grid">
           <div className="experience-card">
             <h3 className="experience-title">Work</h3>
-            <p>
-              <span className="place">Bonakemi</span> <br />
-              <span className="extra-info-date">(2004–2010)</span>
+             <p>
+              <span className="place">Bold Printing Malmö AB</span> <br />
+              <span className="extra-info-date">(2010–2024)</span>
               <br />
               Machine Operator
             </p>
@@ -151,19 +193,19 @@ const HomePage = () => {
               Designer
             </p>
             <p>
-              <span className="place">Bold Printing Malmö AB</span> <br />
-              <span className="extra-info-date">(2010–2024)</span>
+              <span className="place">Bonakemi</span> <br />
+              <span className="extra-info-date">(2004–2010)</span>
               <br />
               Machine Operator
             </p>
           </div>
           <div className="experience-card">
             <h3 className="experience-title">Education</h3>
-            <p>
-              <span className="place">Malmö Latinskola</span> <br />
-              <span className="extra-info-date">(2000–2003)</span>
+             <p>
+              <span className="place">Medieinstitutet</span> <br />
+              <span className="extra-info-date">(2024–2026)</span>
               <br />
-              Science Program <span className="extra-info">(Math/Computer)</span>
+              Frontend Developer
             </p>
             <p>
               <span className="place">Malmö University</span> <br />
@@ -171,11 +213,11 @@ const HomePage = () => {
               <br />
               Construction Engineering <span className="extra-info">(Design)</span>
             </p>
-            <p>
-              <span className="place">Medieinstitutet</span> <br />
-              <span className="extra-info-date">(2024–2026)</span>
+             <p>
+              <span className="place">Malmö Latinskola</span> <br />
+              <span className="extra-info-date">(2000–2003)</span>
               <br />
-              Frontend Developer
+              Science Program <span className="extra-info">(Math/Computer)</span>
             </p>
           </div>
           <div className="experience-card">

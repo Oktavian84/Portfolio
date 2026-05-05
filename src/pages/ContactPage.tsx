@@ -18,14 +18,6 @@ const ContactPage = () => {
           </div>
         </div>
 
-        <div className="contact-card address-card">
-          <h3>Address</h3>
-          <p><strong>Name:</strong> Oktavian Paunku</p>
-          <p><strong>Street:</strong> Sveaborgsgatan 2C</p>
-          <p><strong>ZIP/City:</strong> 213 61 Malmö</p>
-          <p><strong>Country:</strong> Sweden</p>
-        </div>
-
         <div className="contact-card cv-card">
           <h3>CV</h3>
           <p>Download my resume (PDF).</p>
