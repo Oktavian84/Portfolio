@@ -19,7 +19,8 @@
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -34,8 +35,8 @@
 .contact-container {
   position: relative;
   z-index: 1;
-  padding-top: 3em;
-  padding-bottom: 2em;
+  padding-top: 1em;
+  padding-bottom: clamp(3rem, 10vh, 6.5rem);
 
   display: grid;
   grid-template-columns: 500px 500px 370px;
@@ -139,15 +140,30 @@
 
 .contact-icons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5em;
+  align-items: center;
+  gap: 1em 1.25em;
   margin-top: 1.2em;
 }
 
 .contact-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 2.5rem;
+  height: 2.5rem;
   color: white;
   font-size: 2rem;
+  line-height: 0;
   transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-icons a svg {
+  display: block;
+  width: 1em;
+  height: 1em;
 }
 
 .contact-icons a:hover {
@@ -190,6 +206,172 @@ a[href^="mailto:"]:hover {
   transform: translateY(-1px);
 }
 
+.contact-form-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 0.4em;
+  height: 2.5rem;
+  padding: 0 1.05em;
+  margin: 0;
+  border-radius: 9px;
+  border: 1px solid pink;
+  color: white;
+  background: transparent;
+  font-size: 0.98rem;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0 0.5px pink;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    color 0.25s ease;
+}
+
+.contact-form-toggle:hover {
+  background: pink;
+  color: black;
+  box-shadow: 0 0 14px pink;
+  transform: translateY(-1px);
+}
+
+.contact-form-panel {
+  grid-column: 1 / -1;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: rgba(17, 17, 17, 0.85);
+  border-radius: 12px;
+  border: 0.5px solid pink;
+  color: white;
+  box-shadow: 0 0 20px pink;
+  padding: 1.75em 2em 2em;
+  opacity: 0;
+  animation: slideUp 0.55s ease-out forwards;
+}
+
+.contact-form {
+  margin: 0;
+}
+
+.contact-form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15em;
+}
+
+.contact-form-cols {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 2em;
+  min-height: 0;
+}
+
+.contact-form-col--left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.contact-form-col--right {
+  flex: 1.15;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  text-align: left;
+}
+
+.contact-form-field--grow {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-field label {
+  font-size: 1.05rem;
+  color: pink;
+  font-style: italic;
+}
+
+.contact-form-field input,
+.contact-form-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 192, 203, 0.55);
+  border-radius: 8px;
+  padding: 0.55em 0.75em;
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.contact-form-field input:focus,
+.contact-form-field textarea:focus {
+  outline: none;
+  border-color: pink;
+  box-shadow: 0 0 0 1px rgba(255, 192, 203, 0.35);
+}
+
+.contact-form-field input::placeholder,
+.contact-form-field textarea::placeholder {
+  color: rgba(255, 192, 203, 0.55);
+  font-style: italic;
+}
+
+.contact-form-field textarea {
+  flex: 1;
+  min-height: 0;
+  resize: none;
+  align-self: stretch;
+}
+
+.contact-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1em;
+  flex-shrink: 0;
+}
+
+.contact-form-cancel,
+.contact-form-send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1.15em;
+  border-radius: 10px;
+  border: 1px solid pink;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  box-shadow: 0 0 0.5px pink;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    color 0.25s ease;
+}
+
+.contact-form-cancel:hover,
+.contact-form-send:hover {
+  background: pink;
+  color: black;
+  box-shadow: 0 0 18px pink;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 1024px) {
   .contact-container {
     grid-template-columns: 1fr;
@@ -209,6 +391,27 @@ a[href^="mailto:"]:hover {
   .profile-card {
     width: 320px;
     height: 320px;
+  }
+
+  .contact-form-panel {
+    width: 100%;
+    max-width: 360px;
+    padding: 1.4em 1.25em 1.5em;
+  }
+
+  .contact-form-inner {
+    gap: 1em;
+  }
+
+  .contact-form-cols {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25em;
+  }
+
+  .contact-form-field textarea {
+    min-height: 160px;
+    resize: vertical;
   }
 }
 
@@ -256,7 +459,7 @@ a[href^="mailto:"]:hover {
 
   .contact-container {
     padding-top: clamp(3em, 8vh, 9em);
-    padding-bottom: 1em;
+    padding-bottom: clamp(2.5rem, 8vh, 5rem);
     row-gap: clamp(2em, 6vh, 5em); 
     column-gap: 5em;
   }
@@ -284,4 +487,51 @@ a[href^="mailto:"]:hover {
   .cv-download {
     font-size: 1.6rem;
   }
+}
+
+/* Standalone Projects page */
+@keyframes projectsPageContentFadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.projects-page {
+  background-color: #000;
+  min-height: 100vh;
+  position: relative;
+}
+
+.projects-page-inner {
+  position: relative;
+  z-index: 1;
+  padding: 3.5em 0 3em;
+  opacity: 0;
+  animation: projectsPageContentFadeIn 3.6s cubic-bezier(0.16, 1, 0.32, 1) 0.22s
+    forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-page-inner {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Override homepage .projects-section padding-top (e.g. 5em @ 1400px+) */
+.projects-page .projects-section {
+  background-color: transparent;
+  margin-bottom: 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.projects-page .projects-heading {
+  margin-top: 0.25em;
 }

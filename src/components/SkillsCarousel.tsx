@@ -13,26 +13,28 @@ const skills: SkillItem[] = [
   { image: "/images/HTML5.png", alt: "HTML5", rating: "3-5" },
   { image: "/images/CSS.png", alt: "CSS3", rating: "3-5" },
   { image: "/images/Bootstrap.png", alt: "Bootstrap", rating: "3-5" },
+  { image: "/images/Tailwind.png", alt: "Tailwind CSS", rating: "3-5" },
   { image: "/images/JS.png", alt: "JavaScript", rating: "3" },
   { image: "/images/TypeScript.png", alt: "TypeScript", rating: "3" },
   { image: "/images/React.png", alt: "React", rating: "3" },
   { image: "/images/Next.png", alt: "Next.js", rating: "2-5" },
+  { image: "/images/EmailJs.png", alt: "EmailJs", rating: "3" },
+  { image: "/images/Express.png", alt: "Express", rating: "2-5" },
+  { image: "/images/MongoDB.webp", alt: "MongoDB", rating: "2-5" },
   { image: "/images/SQL.png", alt: "SQL", rating: "2-5" },
   { image: "/images/API.webp", alt: "API", rating: "3" },
   { image: "/images/Firebase.jpg", alt: "Firebase", rating: "2-5" },
   { image: "/images/GitHub.webp", alt: "GitHub", rating: "3" },
   { image: "/images/Scrum.png", alt: "Scrum", rating: "4" },
-  { image: "/images/AutoCad.png", alt: "AutoCAD", rating: "3" },
   { image: "/images/Figma.png", alt: "Figma", rating: "3" },
-  { image: "/images/Tailwind.png", alt: "Tailwind CSS", rating: "3-5" },
-  { image: "/images/EmailJs.png", alt: "EmailJs", rating: "3" },
   { image: "/images/Affinity Photo.png", alt: "Affinity Photo", rating: "3" },
+  { image: "/images/AutoCad.png", alt: "AutoCAD", rating: "3" },
 ];
 
 const SkillsCarousel: FC = () => {
   return (
     <section
-      className="skills-section"
+      className="skills-section skills-section--before-scroll-pill"
       data-aos="fade-up"
       data-aos-anchor=".projects-section"
       data-aos-anchor-placement="bottom-center"

@@ -1,9 +1,142 @@
 // pages/HomePage.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import SkillsCarousel from "../components/SkillsCarousel";
+import SchoolProjectsSection from "../components/SchoolProjectsSection";
 
 const HomePage = () => {
-  const [hungryHubFlipped, setHungryHubFlipped] = useState(false);
+  /** Hero paragraph finishes fade ~5s (3.5s delay + 1.5s); +3.5s → first show ~8.5s */
+  const [scrollHintUnlocked, setScrollHintUnlocked] = useState(false);
+  const [scrollHintAllowed, setScrollHintAllowed] = useState(true);
+  /** Chevron under Latest Projects: visible after projects AOS, hidden when Tech Stack fades in */
+  const [showProjectsScrollHint, setShowProjectsScrollHint] = useState(false);
+  /** Chevron under Tech Stack: visible after skills AOS, hidden when Experience fades in */
+  const [showSkillsScrollHint, setShowSkillsScrollHint] = useState(false);
+
+  useEffect(() => {
+    const unlockMs = 8500;
+    const id = window.setTimeout(() => setScrollHintUnlocked(true), unlockMs);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  useEffect(() => {
+    const projectsEl = () => document.querySelector(".projects-section");
+
+    const updateScrollHint = () => {
+      const el = projectsEl();
+      const scrollY = window.scrollY;
+      const stillNearHeroTop = scrollY < 100;
+      const projectsFadingIn =
+        el?.classList.contains("aos-animate") ?? false;
+      setScrollHintAllowed(stillNearHeroTop && !projectsFadingIn);
+    };
+
+    updateScrollHint();
+
+    const projects = projectsEl();
+    const observer = projects
+      ? new MutationObserver(updateScrollHint)
+      : null;
+    if (projects && observer) {
+      observer.observe(projects, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+
+    window.addEventListener("scroll", updateScrollHint, { passive: true });
+    window.addEventListener("resize", updateScrollHint);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", updateScrollHint);
+      window.removeEventListener("resize", updateScrollHint);
+    };
+  }, []);
+
+  useEffect(() => {
+    const projectsEl = () => document.querySelector(".projects-section");
+    const skillsEl = () => document.querySelector(".skills-section");
+
+    const updateProjectsHint = () => {
+      const p = projectsEl();
+      const s = skillsEl();
+      const projectsVisible = p?.classList.contains("aos-animate") ?? false;
+      const skillsVisible = s?.classList.contains("aos-animate") ?? false;
+      setShowProjectsScrollHint(projectsVisible && !skillsVisible);
+    };
+
+    updateProjectsHint();
+
+    const observer = new MutationObserver(updateProjectsHint);
+    const p = projectsEl();
+    const s = skillsEl();
+    if (p) {
+      observer.observe(p, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+    if (s) {
+      observer.observe(s, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+
+    window.addEventListener("scroll", updateProjectsHint, { passive: true });
+    window.addEventListener("resize", updateProjectsHint);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateProjectsHint);
+      window.removeEventListener("resize", updateProjectsHint);
+    };
+  }, []);
+
+  useEffect(() => {
+    const skillsEl = () => document.querySelector(".skills-section");
+    const experienceEl = () =>
+      document.querySelector(".experience-section");
+
+    const updateSkillsHint = () => {
+      const sk = skillsEl();
+      const ex = experienceEl();
+      const skillsVisible = sk?.classList.contains("aos-animate") ?? false;
+      const experienceVisible =
+        ex?.classList.contains("aos-animate") ?? false;
+      setShowSkillsScrollHint(skillsVisible && !experienceVisible);
+    };
+
+    updateSkillsHint();
+
+    const observer = new MutationObserver(updateSkillsHint);
+    const sk = skillsEl();
+    const ex = experienceEl();
+    if (sk) {
+      observer.observe(sk, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+    if (ex) {
+      observer.observe(ex, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+
+    window.addEventListener("scroll", updateSkillsHint, { passive: true });
+    window.addEventListener("resize", updateSkillsHint);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateSkillsHint);
+      window.removeEventListener("resize", updateSkillsHint);
+    };
+  }, []);
+
+  const showScrollHint = scrollHintUnlocked && scrollHintAllowed;
 
   return (
     <>
@@ -20,7 +153,7 @@ const HomePage = () => {
               </h1>
               <h2>Creative, active and always attractive.</h2>
               <p>
-                <span className="hello-move">Hello,</span> <br /> My name is
+                Hello, <br /> My name is
                 Oktavian. I'm a passionate developer, striving to craft
                 responsive and unique digital experiences. <br />
                 Welcome to my creative world, explore my projects and skills to
@@ -31,142 +164,46 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* PROJECTS – ankrad till HERO */}
-      <section
-        className="projects-section"
-        data-aos="fade-up"
-        data-aos-anchor=".hero-section"
-        data-aos-anchor-placement="bottom-center"
-        data-aos-offset="0"
-        data-aos-once="false"
+      <div
+        className={`hero-scroll-hint${
+          showScrollHint ? "" : " hero-scroll-hint--hidden"
+        }`}
+        aria-hidden="true"
       >
-        <h2 className="projects-heading">School Projects</h2>
+        <span className="hero-scroll-hint__icon">
+          <FaChevronDown />
+        </span>
+      </div>
 
-        <div className="projects-grid">
-          <a
-            href="https://quizgamefed24.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-item"
-          >
-            <img src="/images/Project1.png" alt="Quiz Game" />
-            <div className="project-text">
-              <h3>Quiz Game</h3>
-              <p>
-                A fun quiz game testing how well you know your classmates.
-                Choose difficulty and challenge yourself! My first JavaScript
-                project.
-              </p>
-            </div>
-          </a>
+      <SchoolProjectsSection
+        showAllProjects={false}
+        heading="Latest Projects"
+      />
 
-          <a
-            href="https://bortakvall7.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-item"
-          >
-            <img src="/images/Project2.png" alt="Sweets Inventory" />
-            <div className="project-text">
-              <h3>Sweets Inventory</h3>
-              <p>
-                Keep track of candy stock with a visual interface. Built using
-                TS logic and DOM manipulation. My first group project.
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="https://starwars-oki.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-item"
-          >
-            <img src="/images/Project3.png" alt="Star Wars Encyclopedia" />
-            <div className="project-text">
-              <h3>Star Wars Encyclopedia</h3>
-              <p>
-                Browse Star Wars characters, planets and ships using a custom
-                API project. Rich design with React. My first React project.
-              </p>
-            </div>
-          </a>
-
-          <a
-            href="https://omdboki.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-item"
-          >
-            <img src="/images/Project4.png" alt="OMDB" />
-            <div className="project-text">
-              <h3>OMDB</h3>
-              <p>
-                Search for any movie using the OMDB API. Responsive layout with
-                dynamic search filtering. Clean design with React. Implementing TanStack Querry.
-              </p>
-            </div>
-          </a>
-
-          <div
-            className={`project-item project-item--flip ${
-              hungryHubFlipped ? "project-item--flipped" : ""
-            }`}
-            onClick={() => setHungryHubFlipped((v) => !v)}
-            onMouseLeave={() => setHungryHubFlipped(false)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setHungryHubFlipped((v) => !v);
-              }
-            }}
-            role="button"
-            tabIndex={0}
-            aria-expanded={hungryHubFlipped}
-            aria-label="Hungry Hub — click to read why the project is not live online"
-          >
-            <div className="project-item-flip-inner">
-              <div className="project-item-flip-face project-item-flip-face--front">
-                <img src="/images/Project5.png" alt="Hungry Hub" />
-                <div className="project-text">
-                  <h3>Hungry Hub</h3>
-                  <p>
-                    A restaurant and café guide with live map markers and details.
-                    Built in React with Firestore and Google Maps. My last group
-                    project and first time using Firestore.
-                  </p>
-                </div>
-              </div>
-              <div className="project-item-flip-face project-item-flip-face--back">
-                <p className="project-item-flip-message">
-                  This project is not live online because it would incur recurring
-                  monthly costs. Move the cursor away or click again to flip back.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <a
-            href="https://bachelor-thesis-sandy.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-item"
-          >
-            <img src="/images/Project6.png" alt="CINC ART bachelor thesis site" />
-            <div className="project-text">
-              <h3>CINC ART</h3>
-              <p>
-                A marketing site for a welded metal sculpture brand, with gallery
-                pages and contact. Built around a CMS for editable content. My
-                bachelor thesis project.
-              </p>
-            </div>
-          </a>
-        </div>
-      </section>
+      <div
+        className={`projects-scroll-hint${
+          showProjectsScrollHint ? "" : " projects-scroll-hint--hidden"
+        }`}
+        aria-hidden="true"
+      >
+        <span className="projects-scroll-hint__icon">
+          <FaChevronDown />
+        </span>
+      </div>
 
       {/* SKILLS – ankrad till PROJECTS (renderas i komponenten) */}
       <SkillsCarousel />
+
+      <div
+        className={`skills-scroll-hint${
+          showSkillsScrollHint ? "" : " skills-scroll-hint--hidden"
+        }`}
+        aria-hidden="true"
+      >
+        <span className="skills-scroll-hint__icon">
+          <FaChevronDown />
+        </span>
+      </div>
 
       {/* EXPERIENCE – ankrad till SKILLS */}
       <section
@@ -201,6 +238,12 @@ const HomePage = () => {
           </div>
           <div className="experience-card">
             <h3 className="experience-title">Education</h3>
+               <p>
+              <span className="place">PodManager AI</span> <br />
+              <span className="extra-info-date">(2025–2026)</span>
+              <br />
+              Frontend Developer UX/UI Designer
+            </p>
              <p>
               <span className="place">Medieinstitutet</span> <br />
               <span className="extra-info-date">(2024–2026)</span>
@@ -212,12 +255,6 @@ const HomePage = () => {
               <span className="extra-info-date">(2003–2006)</span>
               <br />
               Construction Engineering <span className="extra-info">(Design)</span>
-            </p>
-             <p>
-              <span className="place">Malmö Latinskola</span> <br />
-              <span className="extra-info-date">(2000–2003)</span>
-              <br />
-              Science Program <span className="extra-info">(Math/Computer)</span>
             </p>
           </div>
           <div className="experience-card">

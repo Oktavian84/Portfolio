@@ -12,6 +12,7 @@
   gap: 2em;
   justify-content: flex-start;
   width: 100%;
+  font-weight: bold;
 }
 
 .nav-link {
@@ -39,6 +40,12 @@
 .nav-link.active::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+@media (min-width: 1200px) {
+  .nav-links {
+    padding-left: clamp(3.75rem, 9vw, 13rem);
+  }
 }
 
 @media (max-width: 768px) {

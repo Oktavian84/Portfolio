@@ -54,11 +54,6 @@
   }
 }
 
-@keyframes helloSlide {
-  from { transform: translateX(0); }
-  to   { transform: translateX(var(--hello-shift)); }
-}
-
 .hero-section {
   background-image: url("/images/Background.jpg");
   background-size: cover;
@@ -69,6 +64,60 @@
   box-shadow: 0 0 10px pink, 0 0 20px pink;
   overflow-x: hidden;
   overflow-y: visible;
+}
+
+.hero-scroll-hint,
+.projects-scroll-hint,
+.skills-scroll-hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  padding: 3.35em 0 1.85em;
+  color: #fff;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  line-height: 1;
+  max-height: 11.25rem;
+  overflow: hidden;
+  transition: opacity 1.45s ease, visibility 1.45s ease;
+  pointer-events: none;
+}
+
+.hero-scroll-hint__icon,
+.projects-scroll-hint__icon,
+.skills-scroll-hint__icon {
+  display: flex;
+  filter: drop-shadow(0 0 20px pink);
+  animation: heroScrollHintBounce 2.2s ease-in-out infinite;
+}
+
+/* Wider, shallower V — less sharp than default chevron */
+.hero-scroll-hint__icon svg,
+.projects-scroll-hint__icon svg,
+.skills-scroll-hint__icon svg {
+  display: block;
+  transform: scaleX(1.52) scaleY(0.86);
+  transform-origin: center 58%;
+}
+
+.hero-scroll-hint--hidden,
+.projects-scroll-hint--hidden,
+.skills-scroll-hint--hidden {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@keyframes heroScrollHintBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
 }
 .hero-content {
   width: 100%;
@@ -166,22 +215,17 @@
     fadeOutImage 10s   linear  60s  forwards;
 }
 
-.hello-move {
-  display: inline-block;
-  will-change: transform;
-  animation: helloSlide 12s linear infinite alternate;
-  animation-delay: 7s;
-  --hello-shift: calc(-1 * clamp(16rem, 22vw, 44rem));
-  white-space: nowrap;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.95);
-}
-
 .projects-section {
   background-color: black;
   padding: 1em;
   margin-bottom: 2em;
   color: white;
   margin-top: 0;
+}
+
+/* Home (Latest Projects): mindre luft till pilen — i flödet, ingen överlapp */
+.projects-section.projects-section--before-scroll-pill {
+  margin-bottom: 0.85em;
 }
 
 .projects-heading {
@@ -482,6 +526,11 @@
   overflow-y: visible;
 }
 
+.skills-section.skills-section--before-scroll-pill {
+  padding-bottom: 1.65em;
+  margin-bottom: 0.35em;
+}
+
 .skills-heading {
   font-size: 3.5rem;
   margin-bottom: 0.5em;
@@ -679,10 +728,6 @@
     text-align: center;
   }
 
-  .hello-move {
-    animation-duration: 14s;
-    --hello-shift: calc(-1 * clamp(6rem, 14vw, 18rem));
-  }
   .contact-btn {
     align-self: center;
   }
@@ -725,6 +770,9 @@
     padding-top: 5em;
     margin-bottom: 2em;
   }
+  .projects-section.projects-section--before-scroll-pill {
+    margin-bottom: 0.95em;
+  }
   .projects-heading {
     font-size: 4.5rem;
     margin-bottom: 0.6em;
@@ -734,6 +782,10 @@
   .skills-section {
     margin-bottom: 7em;
     margin-left: 0.7em;
+  }
+  .skills-section.skills-section--before-scroll-pill {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5em;
   }
   .skills-heading {
     font-size: 4.5rem;
@@ -776,10 +828,5 @@
     margin: 0;
     padding-left: 0.3em;
     padding-right: 0;
-  }
-
-  .hello-move {
-    --hello-shift: calc(-1 * clamp(31rem, 35vw, 71rem));
-    animation-duration: 22s;
   }
 }
